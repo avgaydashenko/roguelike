@@ -7,4 +7,4 @@ class Player(Creature):
         Creature.__init__(self, x, y, utils.OBJ_PLAYER)
         self.health = 3
         self.armour = 0
-        self.speed = 1
+        self.keys = 0

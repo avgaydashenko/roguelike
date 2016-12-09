@@ -1,10 +1,13 @@
 import utils
 from objects.player import Player
-from objects.mob import Mob
-from objects.wall import Wall
+from objects.object import Object
+from objects.creature import Creature
+
 
 def init_map():
+
     map = {}
+    artifacts = {}
     creatures = []
     mapfile = open('map')
 
@@ -12,15 +15,17 @@ def init_map():
     for line in mapfile:
         x = 0
         for ch in line:
-            if ch == utils.OBJ_WALL:
-                map[x,y] = Wall(x, y)
+            if ch == utils.OBJ_WALL or ch == utils.OBJ_DOOR:
+                map[x,y] = Object(x, y, ch)
             elif ch == utils.OBJ_PLAYER:
                 player = Player(x, y)
                 creatures.append(player)
             elif ch == utils.OBJ_MOB:
-                creatures.append(Mob(x, y))
+                creatures.append(Creature(x, y, utils.OBJ_MOB))
+            elif ch != ' ':
+                artifacts[x,y] = Object(x, y, ch)
 
             x += 1
         y += 1
 
-    return player, creatures, map
+    return player, creatures, artifacts, map
