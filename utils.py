@@ -14,6 +14,7 @@ MESSAGE_HEALTH = "HEALTH:"
 MESSAGE_ARMOUR = "ARMOUR:"
 MESSAGE_KEYS = "KEYS:"
 
+# coordinates in gamefield to display stats
 X_MESSAGE = 2
 X_STATS = 10
 Y_HEALTH = 46

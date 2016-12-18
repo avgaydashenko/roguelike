@@ -69,6 +69,7 @@ libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | 
 libtcod.console_init_root(utils.SCREEN_WIDTH, utils.SCREEN_HEIGHT, 'roguelike')
 libtcod.sys_set_fps(utils.LIMIT_FPS)
 
+# read objects from file with map
 player, creatures, artifacts, map = initialization.init_map()
 
 for coords in map:
@@ -82,6 +83,8 @@ print_info()
 while not libtcod.console_is_window_closed():
 
     print_stats()
+
+    # you can close game by Esc
     exit = handle_keys()
 
     for creature in creatures:
